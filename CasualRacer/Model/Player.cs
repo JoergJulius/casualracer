@@ -11,19 +11,6 @@ namespace CasualRacer.Model
 {
     internal class Player : INotifyPropertyChanged
     {
-        private string debug = "Debug";
-        public string DebugText
-        {
-            get
-            {
-                return $"DebugText:{Direction}";
-            }
-            set
-            {
-                debug = value;
-            }
-        }
-
         private float direction = 0f;
         public float Direction
         {
