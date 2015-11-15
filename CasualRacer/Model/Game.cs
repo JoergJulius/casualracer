@@ -8,13 +8,21 @@ namespace CasualRacer.Model
 {
     internal class Game
     {
+        public Track Track
+        {
+            get; private set;
+        }
+
         public Player Player1
         {
-            get; set;
+            get; private set;
         }
 
         public Game()
         {
+            Track = new Track(30,15);
+            Track.Tiles[10, 10] = TrackTile.Road;
+
             Player1 = new Player();
         }
 

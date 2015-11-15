@@ -23,9 +23,7 @@ namespace CasualRacer.Model
                 if( direction!=value )
                 {
                     direction = value;
-                    Debug.WriteLine($"{direction}");
-                    if( PropertyChanged != null )
-                        PropertyChanged(this, new PropertyChangedEventArgs("Direction"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Direction"));
                 }
             }
         }
@@ -42,10 +40,7 @@ namespace CasualRacer.Model
                 if( position!=value )
                 {
                     position = value;
-                    if( PropertyChanged!=null )
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Position"));
-                    }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Position"));
                 }
             }
         }
