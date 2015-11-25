@@ -20,15 +20,20 @@ namespace CasualRacer.Model
 
         public Game()
         {
-            Track = new Track(30,15);
-            Track.Tiles[10, 10] = TrackTile.Road;
+            Track = Track.Load("./Tracks/Track1.txt");
 
             Player1 = new Player();
         }
 
         public void Update(TimeSpan totalTime, TimeSpan elapsedTime)
         {
-            Player1.Update(totalTime, elapsedTime);
+            //lenkung
+            if( Player1.WheelLeft )
+                Player1.Direction -= (float)elapsedTime.TotalSeconds * 1000000;
+            if( Player1.WheelRight )
+                Player1.Direction += (float)elapsedTime.TotalSeconds * 1000000;
+
+            //beschleunigung und bremsen
         }
     }
 }

@@ -45,6 +45,23 @@ namespace CasualRacer.Model
             }
         }
 
+        private float velocity = 0f;
+        public float Velocity
+        {
+            get
+            {
+                return velocity;
+            }
+            set
+            {
+                if( velocity != value )
+                {
+                    velocity = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Velocity"));
+                }
+            }
+        }
+
         public bool Acceleration
         {
             get; set;
@@ -57,19 +74,16 @@ namespace CasualRacer.Model
         {
             get; set;
         }
+        public bool Break
+        {
+            get;
+            set;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Player()
         {
-        }
-
-        public void Update(TimeSpan totalTime, TimeSpan elapsedTime)
-        {
-            if( WheelLeft )
-                Direction -= (float)elapsedTime.TotalSeconds * 1000000;
-            if( WheelRight )
-                Direction += (float)elapsedTime.TotalSeconds * 1000000;
         }
     }
 }
