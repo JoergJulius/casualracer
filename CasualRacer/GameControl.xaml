@@ -7,13 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Canvas >
-        <Border Width="20" Height="20" Canvas.Left="-10" Canvas.Top="-10" Background="Red" RenderTransformOrigin="0.5, 0.5">
-            <Border.RenderTransform>
+        <Image Width="20" Height="20" Canvas.Left="-10" Canvas.Top="-10" RenderTransformOrigin="0.5, 0.5" Source="Assets/car_red.png">
+            <Image.RenderTransform>
                 <TransformGroup>
                     <RotateTransform Angle="{Binding Path=Player1.Direction}"/>
                     <TranslateTransform X="{Binding Path=Player1.Position.X}" Y="{Binding Path=Player1.Position.Y}"/>
                 </TransformGroup>
-            </Border.RenderTransform>
-        </Border>
+            </Image.RenderTransform>
+        </Image>
     </Canvas>
 </UserControl>
