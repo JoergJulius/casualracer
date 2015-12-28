@@ -104,7 +104,7 @@ namespace CasualRacer
             Track track = (DataContext as Game).Track;
 
             tilesBrush.TileMode = TileMode.Tile;
-            tilesBrush.Viewport = new Rect(0, 0, 1f / track.Tiles.GetLength(0), 1f / track.Tiles.GetLength(1));
+            tilesBrush.Viewport = new Rect(0, 0, 0.5f / track.Tiles.GetLength(0), 0.5f / track.Tiles.GetLength(1));
             tilesBrush.ViewportUnits = BrushMappingMode.RelativeToBoundingBox;
 
             tilesBrush.Viewbox = new Rect(1820, 0, 128, 128);
@@ -115,20 +115,51 @@ namespace CasualRacer
             {
                 for( int y = 0; y < track.Tiles.GetLength(1); y++ )
                 {
-                    Brush brush = dirtBrush;
                     switch( track.Tiles[x, y] )
                     {
                         case TrackTile.Gras:
-                            brush = grasBrush;
+                            DrawGras(x, y);
                             break;
                         case TrackTile.Road:
-                            brush = roadBrush;
                             break;
                         case TrackTile.Sand:
-                            brush = sandBrush;
                             break;
                     }
-                    drawingContext.DrawRectangle(brush, null, new Rect(x * Track.CELLSIZE, y * Track.CELLSIZE, Track.CELLSIZE, Track.CELLSIZE));
+                    //drawingContext.DrawRectangle(brush, null, new Rect(x * Track.CELLSIZE, y * Track.CELLSIZE, Track.CELLSIZE, Track.CELLSIZE));
+                }
+            }
+        }
+
+        private void DrawGras(int x, int y)
+        {
+            //linke obere ecke
+            if( game.Track.Tiles[x-1,y]!=TrackTile.Gras )
+            {
+                if( game.Track.Tiles[x, y-1]!=TrackTile.Gras )
+                {
+                    //konvexe linke ecke
+                }
+                else
+                {
+                    //linke ecke
+                }
+            }
+            else
+            {
+                if( game.Track.Tiles[x, y-1]!=TrackTile.Gras )
+                {
+                    //obere kante
+                }
+                else
+                {
+                    if( game.Track.Tiles[x-1,y-1]!=TrackTile.Gras )
+                    {
+                        //linke conkave ecke
+                    }
+                    else
+                    {
+                        //vollflächig gras
+                    }
                 }
             }
         }
